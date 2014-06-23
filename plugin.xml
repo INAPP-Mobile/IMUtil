@@ -45,7 +45,7 @@ version="1.0.0">
 		<source-file src="src/www/im_i18n.js" name="imutil" target-dir="assets/www/js" />
 
 
-		<config-file target="AndroidManifest.xml" parent="/*">
+		<config-file target="AndroidManifest.xml" parent="/manifest">
 			    <uses-sdk android:minSdkVersion="17"
 					android:targetSdkVersion="17" />
 
