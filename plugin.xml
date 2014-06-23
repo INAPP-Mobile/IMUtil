@@ -41,8 +41,8 @@ version="1.0.0">
 			</feature>
 		</config-file>
 
-		<source-file src="src/www/imutil.js" name="imutil" target-dir="assets/www/js" >
-		<source-file src="src/www/im_i18n.js" name="imutil" target-dir="assets/www/js" >
+		<source-file src="src/www/imutil.js" name="imutil" target-dir="assets/www/js" />
+		<source-file src="src/www/im_i18n.js" name="imutil" target-dir="assets/www/js" />
 
 
 		<config-file target="AndroidManifest.xml" parent="/*">
