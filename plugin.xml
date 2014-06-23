@@ -33,8 +33,8 @@ version="1.0.0">
 		<!-- Needs cordova/urlutil -->
 	</engines>
 
-	<asset src="www/imutil.js" target="imutil.js" />
-	<asset src="www/im_i18n.js" target="im_i18n.js" />
+	<asset src="www/imutil.js" target="js/imutil.js" />
+	<asset src="www/im_i18n.js" target="js/im_i18n.js" />
 
 	<!-- android -->
 	<platform name="android">
