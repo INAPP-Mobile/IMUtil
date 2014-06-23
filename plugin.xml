@@ -33,6 +33,9 @@ version="1.0.0">
 		<!-- Needs cordova/urlutil -->
 	</engines>
 
+	<asset src="www/imutil.js" target="imutil.js" />
+	<asset src="www/im_i18n.js" target="im_i18n.js" />
+
 	<!-- android -->
 	<platform name="android">
 		<config-file target="res/xml/config.xml" parent="/*">
@@ -40,10 +43,6 @@ version="1.0.0">
 				<param name="android-package" value="kr.imapp.hybrid.lib.IMUtil"/>
 			</feature>
 		</config-file>
-
-		<source-file src="src/www/imutil.js" name="imutil" target-dir="assets/www/js" />
-		<source-file src="src/www/im_i18n.js" name="imutil" target-dir="assets/www/js" />
-
 
 		<config-file target="AndroidManifest.xml" parent="/manifest">
 			    <uses-sdk android:minSdkVersion="17"
