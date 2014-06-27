@@ -1,6 +1,6 @@
 // v1.0
 
-angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ionicPopup) {
+angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ionicPopup, $interval) {
 
     var Const = { ID_WEB: 0, ID_ANDROID: 1, ID_IOS: 2, ID_WP: 3, ID_FFOS: 4 };
     var isPhoneGap;
@@ -65,6 +65,13 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
         }
     }
 
+    function toast(msg) {
+        showLoading(msg);
+        
+        $interval(function(){
+            hideLoading();
+        },3000);
+    }
     function showConfirm(title, msg) {
         var confirmPopup = $ionicPopup.confirm({
             title : title,
@@ -199,11 +206,43 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
         getPlatformID : getPlatformID,
         showConfirm : showConfirm,
         adInterstitial : adInterstitial,
-        adBanner : adBanner,
         ab2str : ab2str,
         str2ab : str2ab,
         sendFeedBack : sendFeedBack,
         showLoading : showLoading,
-        hideLoading : hideLoading
+        hideLoading : hideLoading,
+        toast : toast
     };
-});
+})
+
+.directive('integer', function() {
+   return {
+     restrict: 'A',
+     require: 'ngModel',
+     link: function(scope, element, attrs, modelCtrl) {
+       modelCtrl.$parsers.push(function (inputValue) {
+           // this next if is necessary for when using ng-required on your input. 
+           // In such cases, when a letter is typed first, this parser will be called
+           // again, and the 2nd time, the value will be undefined
+           if (inputValue === undefined) return '';
+           var transformedInput = inputValue.replace(/[^0-9]/g, ''); 
+           if ( parseInt(transformedInput) < attrs.min ) {
+               transformedInput = attrs.min;
+           }
+           if ( parseInt(transformedInput) > attrs.max ) {
+               transformedInput = transformedInput.slice(0,-1);
+           }
+           
+           if (transformedInput !== inputValue) {
+              modelCtrl.$setViewValue(transformedInput);
+              modelCtrl.$render();
+           }         
+           
+            console.log(parseInt(transformedInput)+"::"+attrs.min + ':::' + attrs.max);
+
+           return transformedInput;         
+       });
+     }
+   };
+})
+;
