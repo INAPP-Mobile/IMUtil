@@ -68,8 +68,9 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
     function toast(msg) {
         showLoading(msg);
         
-        $interval(function(){
+        var p = $interval(function(){
             hideLoading();
+            $interval.cancel(p);
         },3000);
     }
     function showConfirm(title, msg) {
