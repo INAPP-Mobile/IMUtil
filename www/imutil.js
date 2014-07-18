@@ -1,8 +1,8 @@
-// v1.0
+// v1.1
 
 angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ionicPopup, $interval) {
 
-    var Const = { ID_WEB: 0, ID_ANDROID: 1, ID_IOS: 2, ID_WP: 3, ID_FFOS: 4 };
+    var Const = { ID_NONE:-1, ID_WEB: 0, ID_ANDROID: 1, ID_IOS: 2, ID_WP: 3, ID_FFOS: 4 };
     var isPhoneGap;
 
     function getAdId() {
@@ -18,7 +18,7 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
             default:
                 break;
         }
-        return '';
+        return ID_NONE;
     }
 
     function adBanner() {
