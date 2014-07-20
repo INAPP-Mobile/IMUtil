@@ -4,7 +4,6 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
 
     var Const = { ID_NONE:-1, ID_WEB: 0, ID_ANDROID: 1, ID_IOS: 2, ID_WP: 3, ID_FFOS: 4 };
     var isPhoneGap;
-    var isInterstitial = false;
     
     function getAdId() {
         switch(isPhoneGap) {
@@ -41,11 +40,6 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
             }, function() {console.log('failed to create banner view');
             });
             
-            am.createInterstitialView({
-                'publisherId' : adId
-            }, function() {
-            	isInterstitial = true;
-            });            
         } else {
             console.log('AdMob plugin not available/ready.');
         }
@@ -54,8 +48,11 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
     function adInterstitial() {
         if (window.plugins && window.plugins.AdMob) {
             var am = window.plugins.AdMob;
-
-            if ( isInterstitial ) {
+            var adId = getAdId();
+            
+            am.createInterstitialView({
+                'publisherId' : adId
+            }, function() {
                 am.requestInterstitialAd({
                     'isTesting' : false
                 }, function() {
@@ -63,7 +60,7 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
                 }, function() {
                     console.log('failed to request ad');
                 });
-            }
+            });
         }
     }
 
