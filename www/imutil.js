@@ -1,4 +1,4 @@
-// v1.1
+// v1.2
 
 angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ionicPopup, $interval) {
 
@@ -93,7 +93,9 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
                 case 'Win32NT':
                     isPhoneGap = Const.ID_WP;
                     return Const.ID_WP;
-                // TODO: include firefox
+                case 'Firefoxos':
+                	isPhoneGap = Const.ID_FFOS;
+                	return Const.ID_FFOS;
                 default:
                     break;
             }
