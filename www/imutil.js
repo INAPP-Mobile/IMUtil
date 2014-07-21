@@ -93,7 +93,7 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
                 case 'Win32NT':
                     isPhoneGap = Const.ID_WP;
                     return Const.ID_WP;
-                case 'Firefoxos':
+                case 'firefoxos':
                 	isPhoneGap = Const.ID_FFOS;
                 	return Const.ID_FFOS;
                 default:
