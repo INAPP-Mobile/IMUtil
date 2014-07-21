@@ -18,7 +18,7 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
             default:
                 break;
         }
-        return ID_NONE;
+        return Const.ID_NONE;
     }
 
     function adBanner() {
