@@ -214,7 +214,6 @@ angular.module('inapp.util', []).factory('IMUtil', function($ionicLoading, $ioni
         }
         else {
         	var path = getCordovaPath() + 'media/ding.wav';
-        	console.log('####:::'+path);
         	var media = new Media(path);
         	media.play();
         }
