@@ -34,7 +34,6 @@ version="1.0.0">
 	</engines>
 
 	<asset src="www/imutil.js" target="js/imutil.js" />
-	<asset src="www/im_i18n.js" target="js/im_i18n.js" />
 	<asset src="www/ding.wav" target="media/ding.wav" />
 
 	<!-- android -->
